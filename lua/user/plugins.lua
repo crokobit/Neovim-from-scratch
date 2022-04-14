@@ -85,6 +85,7 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
 
   -- Treesitter
+  -- https://github.com/nvim-treesitter/nvim-treesitter/issues/2533
   use({
     "nvim-treesitter/nvim-treesitter",
     config = function()
