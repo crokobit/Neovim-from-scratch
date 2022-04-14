@@ -10,11 +10,12 @@ RUN make
 RUN make install
 
 RUN mkdir -p ${NEOVIM_CONFIG_DIR}
-RUN git clone https://github.com/LunarVim/Neovim-from-scratch.git ${NEOVIM_CONFIG_DIR}
+RUN git clone -b crokobit https://github.com/crokobit/Neovim-from-scratch.git ${NEOVIM_CONFIG_DIR}
 # RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'silent PackerSync'
 RUN nvim --headless +"sleep 5" +"autocmd User PackerComplete quitall" +"silent PackerSync"
 #RUN nvim --headless +"sleep 5" +"silent TSInstall"
 #RUN nvim --headless +"sleep 5" +"silent TSInstall python ql" +"sleep 60" +qa
 #RUN nvim --headless +"sleep 5" +"silent TSInstall python bash" +"silent LspInstall python" +"silent LspInstall bash" +"sleep 60" +qa
+RUN nvim --headless -c "TSInstallSync maintained" -c q
 
 #ENTRYPOINT ["nvim"]
