@@ -85,10 +85,30 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
 
   -- Treesitter
-  use {
+  use({
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        -- ensure_installed = "maintained",
+        highlight = {
+          enable = true,
+        },
+        indent = {
+          enable = true,
+        },
+        playground = {
+          enable = true,
+          disable = {},
+          updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+          persist_queries = false, -- Whether the query persists across vim sessions
+        },
+      })
+    end,
+  })
+  -- use {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   run = ":TSUpdate",
+  -- }
   use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Git
