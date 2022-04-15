@@ -17,5 +17,9 @@ RUN nvim --headless +"sleep 5" +"autocmd User PackerComplete quitall" +"silent P
 #RUN nvim --headless +"sleep 5" +"silent TSInstall python ql" +"sleep 60" +qa
 #RUN nvim --headless +"sleep 5" +"silent TSInstall python bash" +"silent LspInstall python" +"silent LspInstall bash" +"sleep 60" +qa
 RUN nvim --headless -c "TSInstallSync maintained" -c q
+WORKDIR /
+RUN mkdir /temp
+WORKDIR /temp
 
-#ENTRYPOINT ["nvim"]
+# ENTRYPOINT ["/bin/bash", "-c", "nvim"]
+ENTRYPOINT ["nvim"]
