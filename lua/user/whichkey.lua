@@ -66,6 +66,7 @@ local setup = {
     -- most people should not need to change this
     i = { "j", "k" },
     v = { "j", "k" },
+    n = { "g", "k" },
   },
 }
 
@@ -86,14 +87,18 @@ local mappings = {
   },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
+  ["d"] = { "<cmd>lua require('hop').hint_words({ multi_windows = true })<CR>", "hop word" },
+  ["c"] = { "<cmd>lua require('hop').hint_char1({ multi_windows = true })<CR>", "hop char" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  -- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, layout_config = { width = 0.999, height = 0.999 }})<cr>",
     "Find files",
   },
-  ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+  -- tODO MOVE FILE
+  -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+  ["F"] = { ":Telescope grep_string search=", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
   p = {

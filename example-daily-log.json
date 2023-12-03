@@ -1,0 +1,1 @@
+{"logs":[{"time":"2022-05-05T08:49:51.622Z","clientTime":"2022-05-05T08:49:49.555Z","message":"wss is stale, need to reconnect","mtgSessionId":"945fae54-895d-445e-d72e-9834fe0c5532","userSessionId":"ecbd8895-0586-4169-d6d2-56bb2d81da62","peerId":null,"domainName":"codementor","level":0,"code":8605}]}

@@ -47,7 +47,7 @@ return packer.startup(function(use)
   use { "JoosepAlviste/nvim-ts-context-commentstring", commit = "4d3a68c41a53add8804f471fcc49bb398fe8de08" }
   use { "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352" }
   use { "kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" }
-  use { "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" }
+  -- use { "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" }
 	use { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" }
   use { "nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" }
   use { "akinsho/toggleterm.nvim", commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda" }
@@ -88,9 +88,95 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		commit = "226c1475a46a2ef6d840af9caa0117a439465500",
 	}
+  --
 
 	-- Git
-	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" }
+	-- use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" }
+  use { 'tpope/vim-fugitive' }
+
+  -- Ruby On Rails
+  use { 'tpope/vim-rails' }
+  use { 'vim-ruby/vim-ruby' } -- " text object m -> mathod M -> Class
+  use { 'AndrewRadev/splitjoin.vim' } -- " gS gJ do end to { }
+  use { 'thoughtbot/vim-rspec' }
+  use { 'tpope/vim-endwise' } -- "add (e.g. ruby end) for every language
+  use { 'nelstrom/vim-textobj-rubyblock' } -- " text object r for do-end block or def end
+  use { 'kana/vim-textobj-user' } -- " dependency of vim-textobj-rubyblock
+
+  -- Search
+  use { 'fntlnz/atags.vim' } -- " file tags generating with ctags
+
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+  }
+  -- use { 'easymotion/vim-easymotion' } -- " ;s ;w ;L / ;f
+
+  use {
+    'numToStr/Navigator.nvim',
+    config = function()
+      require('Navigator').setup()
+    end
+  }
+
+  use { 'vim-test/vim-test' }
+  use { 'christoomey/vim-tmux-runner' }
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  })
+  use { 'tpope/vim-abolish' }
+  -- use { 'github/copilot.vim' }
+  use {
+    "zbirenbaum/copilot.lua",
+    panel = {
+      enabled = true,
+      auto_refresh = false,
+    },
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end,
+  }
+  -- use { '0xStabby/chatgpt-vim' }
+  use({
+    "jackMort/ChatGPT.nvim",
+    config = function()
+      require("chatgpt").setup({
+        keymaps = {
+          submit = "<C-s>"
+        },
+        -- openai_params = {
+        --   model = "gpt-4"
+        -- },
+      })
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  })
+  use { 'jremmen/vim-ripgrep' }
+
+  -- run script
+  use {
+    'michaelb/sniprun',
+    run = 'sh ./install.sh 1'
+  }
+
+
+  -- js gf
+  use {
+    'hotoo/jsgf.vim'
+  }
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
